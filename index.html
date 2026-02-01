@@ -12,33 +12,37 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f8cdda; /* The original pink you liked */
+            background-color: #f8cdda; /* The pink background */
             font-family: 'Arial', sans-serif;
-            overflow: hidden; /* Stops scrolling when button moves */
+            overflow: hidden; /* Keeps the background steady */
         }
         
         .card {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
             max-width: 400px;
-            width: 90%;
-            transition: transform 0.3s ease;
+            width: 85%;
+            
+            /* --- THE SCROLL FIX --- */
+            max-height: 80vh; /* Card won't be taller than 80% of screen */
+            overflow-y: auto; /* Adds scrollbar INSIDE card if text is long */
+            /* --------------------- */
         }
 
         img {
-            width: 150px;
+            width: 140px;
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 10px;
         }
 
         h1 {
-            color: #d81b60; /* Deep pink text */
+            color: #d81b60;
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .btn-container {
@@ -46,6 +50,7 @@
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         button {
@@ -59,7 +64,7 @@
         }
 
         .yes-btn {
-            background-color: #e91e63; /* The nice pink button */
+            background-color: #e91e63;
             color: white;
         }
         
@@ -71,10 +76,10 @@
         .no-btn {
             background-color: #e0e0e0;
             color: #333;
-            position: relative; /* Needed for movement */
+            position: relative;
         }
 
-        /* The Letter Box Style */
+        /* Letter Box Style */
         .letter-box {
             background-color: #fff0f5;
             padding: 20px;
@@ -87,7 +92,6 @@
             margin-top: 15px;
         }
 
-        /* Utility to hide slides */
         .hidden {
             display: none;
         }
@@ -124,28 +128,25 @@
     </div>
 
     <script>
-        // Move from Slide 1 to Slide 2
         function showSlide2() {
             document.getElementById('slide1').classList.add('hidden');
             document.getElementById('slide2').classList.remove('hidden');
         }
 
-        // Move from Slide 2 to Slide 3
         function showSlide3() {
             document.getElementById('slide2').classList.add('hidden');
             document.getElementById('slide3').classList.remove('hidden');
         }
 
-        // The "Runaway No" Button Logic
         function moveButton() {
-            var x = Math.random() * (window.innerWidth - 100); // Random X position
-            var y = Math.random() * (window.innerHeight - 50); // Random Y position
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * (window.innerHeight - 50);
             var btn = document.getElementById('noBtn');
-            
-            btn.style.position = 'fixed'; // Allows it to move anywhere
+            btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
         }
     </script>
 </body>
+</html>
 </html>
